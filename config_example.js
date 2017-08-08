@@ -1,7 +1,7 @@
 module.exports = {
   users: [{
-    name: souta,
-    password: s0s0nt@
+    name: 'souta',
+    password: 's0s0nt@'
   }],
   ir_commands: [{
     label: '照明ON',
