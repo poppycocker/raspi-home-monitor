@@ -1,0 +1,30 @@
+{
+  "name": "raspi-home-monitor",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bme280-sensor": "^0.1.6",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "jsonwebtoken": "^7.4.2",
+    "passport": "^0.3.2"
+  },
+  "devDependencies": {
+    "vue": "^2.4.2",
+    "webpack": "^3.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/poppycocker/raspi-home-monitor.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/poppycocker/raspi-home-monitor/issues"
+  },
+  "homepage": "https://github.com/poppycocker/raspi-home-monitor#readme"
+}
