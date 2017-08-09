@@ -1,6 +1,5 @@
 $(function() {
 
-  const host = 'poppycocker.ddns.net'
   let token = ''
   let webcam = null
 
@@ -35,7 +34,7 @@ $(function() {
 
   // https://bl.ocks.org/igrigorik/5736866
   const getWebCamStream = () => {
-    $('#webcam').attr('src', `//${host}/webcam?token=${token}`)
+    $('#webcam').attr('src', `/webcam?token=${token}`)
   }
 
 })

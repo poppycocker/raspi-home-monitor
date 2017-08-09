@@ -1,3 +1,5 @@
+const fs = require('fs')
+const https = require('https')
 const express = require('express')
 const bodyParser = require('body-parser')
 const jwt = require('jsonwebtoken')
@@ -36,7 +38,16 @@ app.use('/webcam', passport.authenticate('jwt_webcam', {
 }), new MjpegProxy(`http://localhost:${config.webcam.port}/?action=stream`).proxyRequest)
 
 // start server
-app.listen(config.api.port, () => console.log('Express running'))
+if (config.https.use) {
+  const options = {
+    key:  fs.readFileSync(config.https.key),
+    cert: fs.readFileSync(config.https.cert)
+  }
+  const server = https.createServer(options, app);
+  server.listen(config.api.port, () => console.log('Express running'))
+} else {
+  app.listen(config.api.port, () => console.log('Express running'))
+}
 
 
 // [for test]

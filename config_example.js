@@ -1,11 +1,24 @@
 module.exports = {
   users: [{
-    name: 'souta',
-    password: 's0s0nt@'
+    name: 'n@me',
+    password: 'p@ssword'
   }],
   ir_commands: [{
-    label: '照明ON',
+    label: 'turn the light on',
     data: {}
   }],
-  api_port: 8080
+  https: {
+    use: true,
+    key: '/etc/letsencrypt/live/your.ho.st/privkey.pem',
+    cert: '/etc/letsencrypt/live/your.ho.st/fullchain.pem'
+  },
+  api: {
+    port: 8080,
+    jwt: {
+      secretOrKey: 'secret'
+    }
+  },
+  webcam: {
+    port: 8081
+  }
 }
