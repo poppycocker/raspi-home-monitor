@@ -8,6 +8,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "jsonwebtoken": "^7.4.2",
+    "mjpeg-proxy": "^0.2.0",
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1"
   },

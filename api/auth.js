@@ -1,6 +1,5 @@
 const config = require('../config.js')
 const jwt = require('jsonwebtoken')
-const jwtOptions = require('./jwt_options.js')
 
 module.exports = (req, res) => {
   // usually this would be a database call:
@@ -18,7 +17,7 @@ module.exports = (req, res) => {
     }
     res.json({
       message: 'ok',
-      token: jwt.sign(payload, jwtOptions.secretOrKey)
+      token: jwt.sign(payload, config.api.jwt.secretOrKey)
     })
   } else {
     res.status(401).json({
