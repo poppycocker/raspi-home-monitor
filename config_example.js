@@ -14,6 +14,11 @@ module.exports = {
       secretOrKey: 'secret'
     }
   },
+  // params for package `bme280-sensor`
+  bme280: {
+    i2cBusNo: 1, // defaults to 1
+    i2cAddress: 0x77 // defaults to 0x77
+  },
   webcam: {
     port: 8081
   },

@@ -1,8 +1,9 @@
+const config = require('../config.js')
 const BME280 = require('bme280-sensor');
 
 const bme280 = new BME280({
-  i2cBusNo: 1, // defaults to 1
-  i2cAddress: 0x76 // BME280.BME280_DEFAULT_I2C_ADDRESS() // defaults to 0x77
+  i2cBusNo: config.bme280.i2cBusNo, // defaults to 1
+  i2cAddress: config.bme280.i2cAddress // BME280.BME280_DEFAULT_I2C_ADDRESS() // defaults to 0x77
 });
 
 const initBME280 = (res) => {
