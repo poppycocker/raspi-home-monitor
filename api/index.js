@@ -10,6 +10,7 @@ const MjpegProxy = require('mjpeg-proxy').MjpegProxy;
 const config = require('../config.js')
 const auth = require('./auth.js')
 const bme280 = require('./bme280.js')
+const irkit = require('./irkit.js')
 const jwtStrategy = require('./jwt_strategy.js')
 
 const app = express()
@@ -32,6 +33,14 @@ app.post('/api/auth', auth)
 app.get('/api/bme280', passport.authenticate('jwt_api', {
   session: false
 }), bme280)
+
+app.get('/api/irkit', passport.authenticate('jwt_api', {
+  session: false
+}), irkit.get)
+
+app.post('/api/irkit', passport.authenticate('jwt_api', {
+  session: false
+}), irkit.post)
 
 app.use('/webcam', passport.authenticate('jwt_webcam', {
   session: false

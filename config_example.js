@@ -3,10 +3,6 @@ module.exports = {
     name: 'n@me',
     password: 'p@ssword'
   }],
-  ir_commands: [{
-    label: 'turn the light on',
-    data: {}
-  }],
   https: {
     use: true,
     key: '/etc/letsencrypt/live/your.ho.st/privkey.pem',
@@ -20,5 +16,13 @@ module.exports = {
   },
   webcam: {
     port: 8081
+  },
+  irkit: {
+    host: '192.168.1.2',
+    commands: [{
+      label: 'turn the light on',
+      // request body for IRKit's `POST /messages`. stringified JSON required.
+      data: '{"format":"raw","freq":38,"data":[2626,710,2626,710,...]}'
+    }]
   }
 }
