@@ -17,7 +17,9 @@ module.exports = (req, res) => {
     }
     res.json({
       message: 'ok',
-      token: jwt.sign(payload, config.api.jwt.secretOrKey)
+      token: jwt.sign(payload, config.api.jwt.secretOrKey, {
+        expiresIn: config.api.jwt.expiresIn
+      })
     })
   } else {
     res.status(401).json({

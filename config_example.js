@@ -11,7 +11,8 @@ module.exports = {
   api: {
     port: 8080,
     jwt: {
-      secretOrKey: 'secret'
+      secretOrKey: 'secret',
+      expiresIn: '1d'
     }
   },
   // params for package `bme280-sensor`

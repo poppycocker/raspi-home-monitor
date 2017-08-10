@@ -1,7 +1,26 @@
 $(function() {
 
-  let token = ''
+  let token = localStorage.getItem('jwt')
   let webcam = null
+
+  if (!!token) {
+    $.ajax({
+      type: 'POST',
+      url: '/api/verifyjwt',
+      data: `token=${token}`,
+      success: (msg) => {
+        if (msg.success) {
+          $('#auth').hide()
+          startMonitoring()
+        } else {
+          $('#msg').text('login required.')
+        }
+      },
+      error: (xhr, status, err) => {
+        $('#msg').text(`POST /api/verifyjwt: error: ${err}`)
+      }
+    })
+  }
 
   $('#login').click(() => {
     const username = $('#username').val()
@@ -12,13 +31,22 @@ $(function() {
       data: `name=${username}&password=${password}`,
       success: (msg) => {
         token = msg.token
-        $('#token').text(token)
-        setInterval(getSensorData, 3000)
-        getWebCamStream()
-        getIrCommands()
+        localStorage.setItem('jwt', token)
+        $('#auth').hide()
+        startMonitoring()
+      },
+      error: (xhr, status, err) => {
+        $('#msg').text(`POST /api/auth: error: ${err}`)
       }
     })
   })
+
+  const startMonitoring = () => {
+    getSensorData()
+    setInterval(getSensorData, 30 * 1000)
+    getWebCamStream()
+    getIrCommands()
+  }
 
   const getSensorData = () => {
     $.ajax({
@@ -29,6 +57,9 @@ $(function() {
       },
       success: (msg) => {
         $('#bme280').text(JSON.stringify(msg))
+      },
+      error: (xhr, status, err) => {
+        $('#msg').text(`GET /api/bme280: error: ${err}`)
       }
     })
   }
@@ -47,6 +78,9 @@ $(function() {
       },
       success: (msg) => {
         msg.commands.forEach(generateIrButton)
+      },
+      error: (xhr, status, err) => {
+        $('#msg').text(`GET /api/irkit: error: ${err}`)
       }
     })
   }

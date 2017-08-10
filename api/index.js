@@ -9,6 +9,7 @@ const MjpegProxy = require('mjpeg-proxy').MjpegProxy;
 
 const config = require('../config.js')
 const auth = require('./auth.js')
+const verifyJwt = require('./verify_jwt.js')
 const bme280 = require('./bme280.js')
 const irkit = require('./irkit.js')
 const jwtStrategy = require('./jwt_strategy.js')
@@ -29,6 +30,8 @@ app.use(bodyParser.json())
 app.use(express.static('public'))
 
 app.post('/api/auth', auth)
+
+app.post('/api/verifyjwt', verifyJwt)
 
 app.get('/api/bme280', passport.authenticate('jwt_api', {
   session: false
