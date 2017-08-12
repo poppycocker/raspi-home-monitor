@@ -9,13 +9,13 @@ module.exports = {
     })
   },
   post: (req, res) => {
-    const postDataStr = JSON.stringify(req.body.data)
     const options = {
         host: config.irkit.host,
         path: '/messages',
         method: 'POST',
         headers: {
-            'X-Requested-With': 'nodejs'
+          'X-Requested-With': 'nodejs',
+          'Content-Length': Buffer.byteLength(req.body.data)
         }
     }
     const reqIr = http.request(options, (resIr) => {
@@ -26,7 +26,7 @@ module.exports = {
       } else {
         res.json({
           success: false,
-          message: `IRKit returns ${resIr.statusCode}`
+          message: `IRKit returns ${resIr.statusCode}, ${resIr.statusMessage}`
         })
       }
     })
@@ -36,7 +36,7 @@ module.exports = {
         message: e.message
       })
     })
-    reqIr.write(postDataStr)
+    reqIr.write(req.body.data)
     reqIr.end()
   }
 }
