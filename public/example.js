@@ -56,7 +56,11 @@ $(function() {
         'x-access-token': token
       },
       success: (msg) => {
-        $('#bme280').text(JSON.stringify(msg))
+        if (msg.success) {
+          $('#bme280').text(JSON.stringify(msg))
+        } else {
+          $('#msg').text(`GET /api/bme280: error: ${msg.message}`)
+        }
       },
       error: (xhr, status, err) => {
         $('#msg').text(`GET /api/bme280: error: ${err}`)
@@ -97,7 +101,11 @@ $(function() {
         },
         data: `data=${cmd.data}`,
         success: (msg) => {
-          $('#msg').text(`${cmd.label}: success`)
+          if (msg.success) {
+            $('#msg').text(`${cmd.label}: success`)
+          } else {
+            $('#msg').text(`${cmd.label}: error: ${msg.message}`)
+          }
         },
         error: (xhr, status, err) => {
           $('#msg').text(`${cmd.label}: error: ${err}`)

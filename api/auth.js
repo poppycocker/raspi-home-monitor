@@ -6,6 +6,7 @@ module.exports = (req, res) => {
   const user = config.users.find(v => v.name === req.body.name)
   if (!user) {
     res.status(401).json({
+      success: false,
       message: `no such user found: ${JSON.stringify(req.body)}`
     })
     return
@@ -16,13 +17,14 @@ module.exports = (req, res) => {
       id: user.id
     }
     res.json({
-      message: 'ok',
+      success: true,
       token: jwt.sign(payload, config.api.jwt.secretOrKey, {
         expiresIn: config.api.jwt.expiresIn
       })
     })
   } else {
     res.status(401).json({
+      success: false,
       message: 'passwords did not match'
     })
   }
