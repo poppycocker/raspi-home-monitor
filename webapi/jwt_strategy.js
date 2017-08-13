@@ -1,5 +1,5 @@
 const passportJWT = require('passport-jwt')
-const config = require('../config.js')
+const config = require('../config/webapi.config.js')
 const jwtOptions = require('./jwt_options.js')
 const JwtStrategy = passportJWT.Strategy
 

@@ -1,4 +1,4 @@
-const config = require('../config.js')
+const config = require('../config/webapi.config.js')
 const http = require('http')
 
 module.exports = {

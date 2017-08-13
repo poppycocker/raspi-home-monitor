@@ -7,7 +7,7 @@ const passport = require('passport')
 const passportJWT = require('passport-jwt')
 const MjpegProxy = require('mjpeg-proxy').MjpegProxy;
 
-const config = require('../config.js')
+const config = require('../config/webapi.config.js')
 const auth = require('./auth.js')
 const verifyJwt = require('./verify_jwt.js')
 const bme280 = require('./bme280.js')

@@ -1,4 +1,4 @@
-const config = require('../config.js')
+const config = require('../config/webapi.config.js')
 const passportJWT = require('passport-jwt')
 const ExtractJwt = passportJWT.ExtractJwt
 

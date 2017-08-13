@@ -1,4 +1,4 @@
-const config = require('../config.js')
+const config = require('../config/webapi.config.js')
 const BME280 = require('bme280-sensor');
 
 const bme280 = new BME280({
