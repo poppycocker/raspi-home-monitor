@@ -59,3 +59,7 @@ typings/
 
 # ignore user defined config
 config/webapi.config.js
+config/dev.proxyTable.js
+
+# ignore www public directory
+public/
