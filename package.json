@@ -1,12 +1,13 @@
 {
   "name": "raspi-home-monitor",
-  "version": "0.0.1",
-  "description": "a home monitoring system of using Raspberry Pi and IRKit",
+  "version": "1.0.0",
+  "description": "A home monitoring system of using Raspberry Pi (with USB-WebCam and BME280 Sensor Unit) and IRKit",
   "author": "poppycocker <r.poppycocker@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
+    "start_api": "node webapi/index.js",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue webui"
   },

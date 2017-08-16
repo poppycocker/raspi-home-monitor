@@ -1,24 +1,39 @@
-# raspi-home-monitor-webui
+# raspi-home-monitor
 
-> a home monitoring system of using Raspberry Pi and IRKit
+A home monitoring system of using Raspberry Pi (with USB-WebCam and BME280 Sensor Unit) and IRKit.
 
-## Build Setup
+## System Setup
+
+1. Connect following devices to your Raspberry Pi.
+    * USB-WebCam
+    * BME280 Sensor Unit via I2C via GPIO
+2. Install Node.js on your Raspberry Pi.
+3. Launch MJPEG server(like 'mjpeg-streamer') on your Raspberry Pi.
+4. Launch your IRKit on your network.
+5. (optional, but recommended) install SSL/TLS server certificate files to your Raspberry Pi.
+
+## How to Use
+
+1. Create `config/webapi.config.js`
+    * by copying `config/webapi.config_example.js` and edit it.
+2. Run following commands(*).
+3. Access `http(s)://[your Raspberry Pi's host]:[api.port on config/webapi.config.js]/`
+4. Enter username and password that you defined in `config/webapi.config.js`
+5. Enjoy.
+
+### commands(*)
 
 ``` bash
 # install dependencies
 npm install
 
-# serve webui with hot reload at localhost:8080
-npm run dev
-
 # build webui for production with minification
+# generates public/index.html and statics.
 npm run build
 
-# build webui for production and view the bundle analyzer report
-npm run build --report
-
-# run webapi server on your Raspberry Pi
+# run webapi-server on your Raspberry Pi
+# 
+# * depending on path of your SSL/TLS server certificate files, sudo will be required if `https.use: true` is set on config/webapi.config.js
+# * running as daemon by using tool like `forever` is recommended
 (sudo) node webapi/index.js
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

@@ -1,15 +1,22 @@
+// !!!
+// this is an example.
+// create 'webapi.config.js'
 module.exports = {
+  // user profiles for authentication
   users: [{
     name: 'n@me',
     password: 'p@ssword'
   }],
+  // params for https. `use: true` is recommended.
   https: {
     use: true,
     key: '/etc/letsencrypt/live/your.ho.st/privkey.pem',
     cert: '/etc/letsencrypt/live/your.ho.st/fullchain.pem'
   },
   api: {
+    // Web Server (serves public/*) uses same port.
     port: 8080,
+    // params for JSON Web Token 
     jwt: {
       secretOrKey: 'secret',
       expiresIn: '1d'
@@ -21,6 +28,7 @@ module.exports = {
     i2cAddress: 0x77 // defaults to 0x77
   },
   webcam: {
+    // your MJPEG server's port on Raspberry Pi
     port: 8081
   },
   irkit: {
