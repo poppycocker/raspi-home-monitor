@@ -29,7 +29,7 @@ const readBME280SensorData = (res) => {
       })
     })
     .catch((err) => {
-      res.json({
+      res.status(500).json({
         success: false,
         message: `BME280 read error: ${err}`
       })

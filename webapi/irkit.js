@@ -24,7 +24,7 @@ module.exports = {
           success: true
         })
       } else {
-        res.json({
+        res.status(resIr.statusCode).json({
           success: false,
           message: `IRKit returns ${resIr.statusCode}, ${resIr.statusMessage}`
         })
