@@ -2,6 +2,8 @@
 
 A home monitoring system of using Raspberry Pi (with USB-WebCam and BME280 Sensor Unit) and IRKit.
 
+![system composition example](https://github.com/poppycocker/raspi-home-monitor/blob/master/system_composition_example.jpg)
+
 ## System Setup
 
 1. Connect following devices to your Raspberry Pi.
@@ -37,3 +39,103 @@ npm run build
 # * running as daemon by using tool like `forever` is recommended
 (sudo) node webapi/index.js
 ```
+
+## REST API Specification
+
+### POST /api/auth
+
+Authenticates provided username and password, returns generated token.
+
+- parameters
+    + name (required)
+    + password (required)
+- response(200)
+    + headers
+        * Content-Type: application/json
+    + body
+        * `{"success":true,"token":"....."}` 
+- response(401)
+    + headers
+        * Content-Type: application/json
+    + body
+        * `{"success":false,"message":"....."}`
+
+### POST /api/verifyjwt
+
+Verifies token string.
+
+- parameters
+    + token (required)
+- response(200)
+    + headers
+        * Content-Type: application/json
+    + body
+        * `{"success":true/false}`
+
+### GET /api/bme280
+
+Provides temperature, pressure and humidity from BME280 sensor unit.
+
+- headers
+    + x-access-token: [served token]
+- response(200)
+    + headers
+        * Content-Type: application/json
+    + body
+        * `{"success":true,"temperature_C":0.0,"pressure_hPa":0.0,"humidity":0.0}` 
+- response(401)
+    + body
+        * Unauthorized
+- response(500)
+    + body
+        * `{"success":false,"message":"....."}` 
+
+### GET /api/irkit
+
+Gets an array of IRKit command data you defined in `config/webapi.config.js`
+
+- headers
+    + x-access-token: [served token]
+- response(200)
+    + headers
+        * Content-Type: application/json
+    + body
+        * `{"success":true,"commands":[{"label": ".....","data":{.....}}, ...]}` 
+- response(401)
+    + body
+        * Unauthorized
+
+### POST /api/irkit
+
+Posts an IRKit command data.
+
+- parameters
+    + data (required, stringified JSON of IR data: `{"format":"raw","freq":"38","data":[.....]}`)
+- response(200)
+    + headers
+        * Content-Type: application/json
+    + body
+        * `{"success":true}` 
+- response(401)
+    + body
+        * Unauthorized
+- response(other code, see IRKit's API document)
+    + headers
+        * Content-Type: application/json
+    + body
+        * `{"success":false,"message":"....."}` 
+
+### GET /webcam
+
+Provides MJPEG stream. Set this to attribute 'src' of `<img>`.
+
+- parameters
+    + token: [served token]
+- response(200)
+    + headers
+        * Content-Type: multipart/x-mixed-replace;boundary=boundarydonotcross
+    + body
+        * MJPEG Stream 
+- response(401)
+    + body
+        * Unauthorized
