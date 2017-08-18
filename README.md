@@ -15,13 +15,13 @@ A home monitoring system of using Raspberry Pi (with USB-WebCam and BME280 Senso
 5. (optional, but recommended) install SSL/TLS server certificate files to your Raspberry Pi.
 
 ## How to Use
-
-1. Create `config/webapi.config.js`
+1. `git clone https://github.com/poppycocker/raspi-home-monitor.git`
+2. Create `config/webapi.config.js`
     * by copying `config/webapi.config_example.js` and edit it.
-2. Run following commands(*).
-3. Access `http(s)://[your Raspberry Pi's host]:[api.port on config/webapi.config.js]/`
-4. Enter username and password that you defined in `config/webapi.config.js`
-5. Enjoy.
+3. Run following commands(*).
+4. Access `http(s)://[your Raspberry Pi's host]:[api.port on config/webapi.config.js]/`
+5. Enter username and password that you defined in `config/webapi.config.js`
+6. Enjoy.
 
 ### commands(*)
 
@@ -109,6 +109,8 @@ Gets an array of IRKit command data you defined in `config/webapi.config.js`
 
 Posts an IRKit command data.
 
+- headers
+    + x-access-token: [served token]
 - parameters
     + data (required, stringified JSON of IR data: `{"format":"raw","freq":"38","data":[.....]}`)
 - response(200)
