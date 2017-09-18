@@ -1,6 +1,6 @@
 <template>
   <transition name="fade" v-on:after-enter="onAfterEnterTransition">
-    <div class="message" v-if="message.length > 0">
+    <div v-if="message.length > 0">
       <p>{{message}}</p>
     </div>
   </transition>
@@ -17,8 +17,8 @@ export default {
 }
 </script>
 
-<style>
-.message {
+<style scoped>
+div {
   position: fixed;
   left: 0;
   top: 1em;
@@ -26,7 +26,7 @@ export default {
   text-align: center;
   z-index: 65536;
 }
-.message p {
+div p {
   display: inline-block;
   width: 80%;
   border: 3px solid #BC1142;

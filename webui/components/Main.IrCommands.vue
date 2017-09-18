@@ -1,6 +1,6 @@
 <template>
   <section>
-    <ul class="ir-commands">
+    <ul>
       <li v-for="command in commands" @click="postCommand(command)">{{command.label}}</li>
     </ul>
   </section>
@@ -57,24 +57,24 @@ export default {
 }
 </script>
 
-<style>
-.ir-commands {
+<style scoped>
+ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-.ir-commands li {
+ul li {
   display: inline-block;
   border: 1px solid #CCC;
   margin: 0.2em;
   padding: 0.5em;
 }
-.ir-commands li:hover {
+ul li:hover {
   background-color: #BC1142;
   color: white;
   cursor: pointer;
 }
-.ir-commands li:active {
+ul li:active {
   background-color: white;
   color: #2c3e50;
   cursor: pointer;
