@@ -6,7 +6,6 @@ import Auth from '@/components/Auth'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history', // to remove hashbang
   routes: [{
     path: '/',
     name: 'Main',
