@@ -1,6 +1,6 @@
 {
   "name": "raspi-home-monitor",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "A home monitoring system of using Raspberry Pi (with USB-WebCam and BME280 Sensor Unit) and IRKit",
   "author": "poppycocker <r.poppycocker@gmail.com>",
   "private": true,
