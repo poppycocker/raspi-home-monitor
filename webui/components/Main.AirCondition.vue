@@ -1,6 +1,6 @@
 <template>
   <section>
-    <ul class="air-condition">
+    <ul>
       <li>{{temperature}} ℃</li>
       <li>{{humidity}} %</li>
       <li>{{pressure}} hPa</li>
@@ -49,13 +49,13 @@ export default {
 }
 </script>
 
-<style>
-.air-condition {
+<style scoped>
+ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-.air-condition li {
+ul li {
   display: inline-block;
   margin-right: 0.5em;
   padding: 0.5em;
