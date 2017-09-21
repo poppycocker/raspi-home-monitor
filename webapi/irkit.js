@@ -10,15 +10,15 @@ module.exports = {
   },
   post: (req, res) => {
     const options = {
-        host: config.irkit.host,
-        path: '/messages',
-        method: 'POST',
-        headers: {
-          'X-Requested-With': 'nodejs',
-          'Content-Length': Buffer.byteLength(req.body.data)
-        }
+      host: config.irkit.host,
+      path: '/messages',
+      method: 'POST',
+      headers: {
+        'X-Requested-With': 'nodejs',
+        'Content-Length': Buffer.byteLength(req.body.data)
+      }
     }
-    const reqIr = http.request(options, (resIr) => {
+    const reqIr = http.request(options, resIr => {
       if (resIr.statusCode === 200) {
         res.json({
           success: true
@@ -30,7 +30,7 @@ module.exports = {
         })
       }
     })
-    reqIr.on('error', (e) => {
+    reqIr.on('error', e => {
       res.json({
         success: false,
         message: e.message
