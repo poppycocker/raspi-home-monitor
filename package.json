@@ -1,7 +1,8 @@
 {
   "name": "raspi-home-monitor",
-  "version": "1.2.0",
-  "description": "A home monitoring system of using Raspberry Pi (with USB-WebCam and BME280 Sensor Unit) and IRKit",
+  "version": "1.3.0",
+  "description":
+    "A home monitoring system of using Raspberry Pi (with USB-WebCam and BME280 Sensor Unit) and IRKit",
   "author": "poppycocker <r.poppycocker@gmail.com>",
   "private": true,
   "scripts": {
@@ -80,9 +81,5 @@
     "npm": ">= 3.0.0"
   },
   "homepage": "https://github.com/poppycocker/raspi-home-monitor#readme",
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+  "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"]
 }
